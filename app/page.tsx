@@ -58,8 +58,8 @@ export default async function HomePage() {
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-12 sm:mt-20">
         <ScrollReveal className="flex items-end justify-between mb-6 sm:mb-10">
           <div>
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">Categories</p>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl">Find your lane.</h2>
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Categories</p>
+            <h2 className="mt-2 font-brand text-4xl sm:text-6xl text-ink">Find your lane.</h2>
           </div>
         </ScrollReveal>
 
@@ -81,7 +81,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <ScrollReveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 sm:mb-10">
             <div>
-              <h2 className="font-display text-4xl sm:text-5xl">New In</h2>
+              <h2 className="font-brand text-5xl sm:text-7xl text-ink leading-none">New In</h2>
               <p className="mt-2 text-sm sm:text-base text-ink-muted">
                 Fresh drops. One of a kind. Gone when it&apos;s gone.
               </p>
@@ -119,8 +119,8 @@ export default async function HomePage() {
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-28 sm:mt-40">
         <div className="grid gap-10 sm:gap-16 sm:grid-cols-12 items-start">
           <ScrollReveal className="sm:col-span-7">
-            <p className="font-display text-[34px] sm:text-[44px] leading-[1.1] tracking-[-0.01em]">
-              We find the ones <span className="italic text-accent-dark">worth keeping.</span>
+            <p className="font-brand text-5xl sm:text-7xl text-ink leading-[1.0]">
+              We find the ones <span className="text-accent-dark">worth keeping.</span>
             </p>
           </ScrollReveal>
           <ScrollReveal delay={120} className="sm:col-span-5 sm:pt-3">
@@ -141,13 +141,13 @@ export default async function HomePage() {
 
       {/* FEATURED COLLECTION BANNER */}
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-28 sm:mt-40">
-        <div className="grid gap-0 sm:gap-0 sm:grid-cols-2 overflow-hidden rounded-xl border border-sand-200 bg-sand-100">
+        <div className="grid gap-0 sm:gap-0 sm:grid-cols-2 overflow-hidden rounded-2xl bg-pool shadow-xl shadow-accent/10">
           <ScrollReveal className="relative aspect-[4/3] sm:aspect-auto sm:min-h-[480px]">
-            <PlaceholderImage kind="featured" index={3} />
+            <PlaceholderImage kind="featured" index={1} />
           </ScrollReveal>
           <ScrollReveal delay={120} className="p-8 sm:p-14 lg:p-20 flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">Featured</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-5xl leading-[1.05]">
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Featured</p>
+            <h2 className="mt-3 font-brand text-5xl sm:text-7xl text-ink leading-[0.95]">
               Bags Drop.
             </h2>
             <p className="mt-4 text-ink-muted max-w-md leading-relaxed">
@@ -157,7 +157,7 @@ export default async function HomePage() {
             <div className="mt-8">
               <Link
                 href="/collections/bags"
-                className="inline-flex items-center px-7 py-4 bg-ink text-sand-50 text-sm uppercase tracking-wide2 press hover:bg-accent-dark"
+                className="btn-tropical inline-flex items-center px-7 py-4 rounded-full text-sm uppercase tracking-wide2"
               >
                 Shop the drop
               </Link>
@@ -167,11 +167,11 @@ export default async function HomePage() {
       </section>
 
       {/* CONDITION GUIDE */}
-      <section className="mt-28 sm:mt-40 bg-sand-100">
+      <section className="mt-28 sm:mt-40 bg-pool">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-16 sm:py-24">
           <ScrollReveal>
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">Reading the labels</p>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl max-w-2xl">
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Reading the labels</p>
+            <h2 className="mt-2 font-brand text-4xl sm:text-6xl text-ink max-w-2xl leading-[0.95]">
               What do the condition labels mean?
             </h2>
           </ScrollReveal>

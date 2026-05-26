@@ -31,12 +31,12 @@ const labels: Record<Kind, string> = {
 };
 
 const palettes: { from: string; to: string }[] = [
-  { from: "#E8DFD0", to: "#D4C9B5" },
-  { from: "#D4C5AF", to: "#B9A98C" },
-  { from: "#C9BAA3", to: "#A8987F" },
-  { from: "#BFB097", to: "#9C8C72" },
-  { from: "#DCD0BB", to: "#C0B299" },
-  { from: "#CFBFA4", to: "#B0A085" },
+  { from: "#A8E6E2", to: "#5BC9C9" }, // shallow pool
+  { from: "#FFD0C5", to: "#FF8B7D" }, // sunset coral
+  { from: "#C9F0DC", to: "#6FCFA0" }, // seafoam
+  { from: "#FFE9B3", to: "#FFC36B" }, // sun-bleached
+  { from: "#BCE7F2", to: "#74C9DC" }, // sky
+  { from: "#FFC2D9", to: "#FF8AB6" }, // hibiscus
 ];
 
 export function PlaceholderImage({
@@ -58,7 +58,7 @@ export function PlaceholderImage({
     >
       <div className="absolute inset-0 grain opacity-50 mix-blend-multiply" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.1em] text-[#8B7D6B] uppercase">
+        <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.1em] text-white/70 uppercase mix-blend-overlay">
           {labels[kind]}
         </span>
       </div>

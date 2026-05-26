@@ -19,18 +19,18 @@ export function ReserveButton({ product, variant = "primary", full = false }: Pr
         disabled
         className={`${
           full ? "w-full" : ""
-        } inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-wide2 bg-sand-100 text-ink-muted cursor-not-allowed`}
+        } inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm uppercase tracking-wide2 bg-sand-100 text-ink-muted cursor-not-allowed`}
       >
         Sold Out
       </button>
     );
   }
 
-  const base = `${full ? "w-full" : ""} relative inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-wide2 press`;
+  const base = `${full ? "w-full" : ""} relative inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm uppercase tracking-wide2`;
   const styles =
     variant === "primary"
-      ? "bg-ink text-sand-50 hover:bg-accent-dark"
-      : "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-sand-50";
+      ? "btn-tropical"
+      : "border border-accent/30 text-ink hover:border-accent hover:bg-accent/10 press";
 
   return (
     <div className={full ? "w-full" : "inline-block"}>
@@ -47,7 +47,7 @@ export function ReserveButton({ product, variant = "primary", full = false }: Pr
           href={instagramReserveUrl(product)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${full ? "w-full" : ""} inline-flex items-center justify-center gap-2 px-6 py-3 text-sm uppercase tracking-wide2 bg-ink text-sand-50 press hover:bg-accent-dark`}
+          className={`btn-coral ${full ? "w-full" : ""} inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm uppercase tracking-wide2`}
         >
           <InstagramGlyph /> Instagram DM
         </a>
@@ -55,7 +55,7 @@ export function ReserveButton({ product, variant = "primary", full = false }: Pr
           href={messengerReserveUrl(product)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${full ? "w-full" : ""} inline-flex items-center justify-center gap-2 px-6 py-3 text-sm uppercase tracking-wide2 border border-ink/20 text-ink press hover:bg-ink hover:text-sand-50 hover:border-ink`}
+          className={`${full ? "w-full" : ""} inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm uppercase tracking-wide2 border border-accent/30 text-ink press hover:bg-accent/10 hover:border-accent`}
         >
           <MessengerGlyph /> Messenger
         </a>

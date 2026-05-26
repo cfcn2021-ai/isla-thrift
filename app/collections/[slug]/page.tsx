@@ -65,16 +65,22 @@ export default async function CollectionPage({
   const visible = applyFilters(allItems, filters);
 
   return (
-    <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-10 sm:pt-16 pb-20">
-      <ScrollReveal>
-        <p className="text-xs uppercase tracking-wide2 text-ink-muted">Collection</p>
-        <h1 className="mt-3 font-display text-4xl sm:text-6xl tracking-[-0.01em]">
-          {collection.title}
-        </h1>
-        <p className="mt-3 max-w-2xl text-ink-muted">{collection.descriptor}</p>
-      </ScrollReveal>
+    <>
+      <div className="bg-pool">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-10 sm:pt-16 pb-10 sm:pb-14">
+          <ScrollReveal>
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Collection</p>
+            <h1 className="mt-3 font-brand text-5xl sm:text-7xl lg:text-8xl text-ink leading-[0.95]">
+              {collection.title}
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">{collection.descriptor}</p>
+          </ScrollReveal>
+        </div>
+      </div>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
+      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-20">
+
+      <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
         <CollectionToolbar
           facets={facets}
           selectedConditions={[...filters.conditions]}
@@ -89,8 +95,8 @@ export default async function CollectionPage({
           <CollectionSortBar sort={filters.sort} totalShown={visible.length} />
 
           {visible.length === 0 ? (
-            <div className="border border-dashed border-sand-200 rounded-xl py-20 text-center">
-              <p className="font-display text-2xl">
+            <div className="bg-pool rounded-2xl py-20 text-center">
+              <p className="font-brand text-3xl text-ink">
                 {allItems.length === 0
                   ? "Nothing here yet."
                   : "No matches for those filters."}
@@ -113,5 +119,6 @@ export default async function CollectionPage({
         </div>
       </div>
     </section>
+    </>
   );
 }

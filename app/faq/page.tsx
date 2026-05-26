@@ -47,8 +47,8 @@ export default function FAQPage() {
   return (
     <section className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-10 pt-12 sm:pt-20 pb-24">
       <ScrollReveal>
-        <p className="text-xs uppercase tracking-wide2 text-ink-muted">Help</p>
-        <h1 className="mt-3 font-display text-5xl sm:text-6xl tracking-[-0.01em]">
+        <p className="text-xs uppercase tracking-wide2 text-accent-dark">Help</p>
+        <h1 className="mt-3 font-brand text-5xl sm:text-7xl text-ink leading-[0.95]">
           FAQ &amp; Shipping
         </h1>
         <p className="mt-5 max-w-xl text-ink-muted leading-relaxed">
@@ -62,9 +62,9 @@ export default function FAQPage() {
 
       <div className="mt-20 grid gap-8 sm:grid-cols-2">
         <ScrollReveal>
-          <div className="rounded-xl border border-sand-200 p-7 h-full">
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">Shipping map</p>
-            <h3 className="mt-2 font-display text-2xl">Nationwide PH delivery</h3>
+          <div className="rounded-2xl bg-pool p-7 h-full">
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Shipping map</p>
+            <h3 className="mt-2 font-brand text-3xl text-ink">Nationwide PH delivery</h3>
             <div className="mt-5">
               <svg viewBox="0 0 200 240" className="w-full max-w-[200px] h-auto text-accent-dark">
                 {/* Simplified PH archipelago silhouette */}
@@ -87,14 +87,14 @@ export default function FAQPage() {
         </ScrollReveal>
 
         <ScrollReveal delay={120}>
-          <div className="rounded-xl border border-sand-200 p-7 h-full">
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">Payments</p>
-            <h3 className="mt-2 font-display text-2xl">Accepted methods</h3>
+          <div className="rounded-2xl bg-pool p-7 h-full">
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Payments</p>
+            <h3 className="mt-2 font-brand text-3xl text-ink">Accepted methods</h3>
             <ul className="mt-5 grid grid-cols-2 gap-2 text-sm">
-              <li className="px-3 py-2 rounded-md bg-sand-100">GCash</li>
-              <li className="px-3 py-2 rounded-md bg-sand-100">Maya</li>
-              <li className="px-3 py-2 rounded-md bg-sand-100">Bank Transfer</li>
-              <li className="px-3 py-2 rounded-md bg-sand-100">COD (select areas)</li>
+              <li className="px-3 py-2 rounded-full bg-white/70 text-ink">GCash</li>
+              <li className="px-3 py-2 rounded-full bg-white/70 text-ink">Maya</li>
+              <li className="px-3 py-2 rounded-full bg-white/70 text-ink">Bank Transfer</li>
+              <li className="px-3 py-2 rounded-full bg-white/70 text-ink">COD (select areas)</li>
             </ul>
             <p className="mt-4 text-sm text-ink-muted leading-relaxed">
               We send payment details on DM once you confirm the item. No checkout fees.

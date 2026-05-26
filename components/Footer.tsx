@@ -36,7 +36,7 @@ export function Footer() {
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-16">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-5">
-              <p className="font-display text-2xl tracking-[0.06em] uppercase">
+              <p className="font-brand text-4xl text-ink">
                 {site.name}
               </p>
               <p className="mt-3 font-display italic text-ink-muted">
@@ -46,10 +46,6 @@ export function Footer() {
                 {site.description}
               </p>
 
-              {/* FIRST-DIBS CTA — styled like a newsletter signup, but actually opens
-                  Instagram DM with a prefilled message. No ESP infrastructure to
-                  set up; the client manages drops through the same inbox they
-                  already check. Swap to a real email tool later if needed. */}
               <div className="mt-8 max-w-md">
                 <p className="font-display text-lg leading-snug">
                   Get first dibs on new arrivals.
@@ -61,7 +57,7 @@ export function Footer() {
                   href={instagramFirstDibsUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center px-6 py-3 bg-ink text-sand-50 text-sm uppercase tracking-wide2 press hover:bg-accent-dark"
+                  className="btn-tropical mt-4 inline-flex items-center px-6 py-3 rounded-full text-sm uppercase tracking-wide2"
                 >
                   Add me on Instagram →
                 </a>

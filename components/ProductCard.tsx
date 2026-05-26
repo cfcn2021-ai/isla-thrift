@@ -67,7 +67,7 @@ export function ProductCard({
 
         {!product.sold && product.comparePrice && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="inline-flex items-center rounded-full bg-accent text-white px-2.5 py-1 text-[10px] uppercase tracking-wide2">
+            <span className="btn-coral inline-flex items-center rounded-full px-2.5 py-1 text-[10px] uppercase tracking-wide2">
               On Sale
             </span>
           </div>

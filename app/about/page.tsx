@@ -30,13 +30,14 @@ const steps = [
 export default function AboutPage() {
   return (
     <>
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-12 sm:pt-20 pb-16">
+      <section className="bg-pool relative overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-12 sm:pt-20 pb-16">
         <div className="grid gap-12 lg:gap-20 lg:grid-cols-12 items-start">
           <ScrollReveal className="lg:col-span-7">
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">About</p>
-            <h1 className="mt-3 font-display text-5xl sm:text-7xl leading-[0.98] tracking-[-0.02em]">
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">About</p>
+            <h1 className="mt-3 font-brand text-6xl sm:text-8xl leading-[0.95] text-ink">
               The good stuff,<br />
-              <span className="italic text-accent-dark">honestly priced.</span>
+              <span className="text-accent-dark">honestly priced.</span>
             </h1>
             <p className="mt-8 max-w-xl text-[17px] sm:text-lg leading-relaxed text-ink-muted">
               {site.description}
@@ -53,26 +54,25 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={120} className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl">
-              {/* PLACEHOLDER: brand portrait — founder, workspace, or product still life.
-                  Recommended: 1200×800px, warm natural light. */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl shadow-accent/10">
               <PlaceholderImage kind="about" index={2} />
             </div>
           </ScrollReveal>
         </div>
+        </div>
       </section>
 
-      <section className="bg-sand-100 mt-12 sm:mt-20">
+      <section className="bg-sunset mt-0">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-20 sm:py-28">
           <ScrollReveal>
-            <p className="text-xs uppercase tracking-wide2 text-ink-muted">How it works</p>
-            <h2 className="mt-2 font-display text-4xl sm:text-5xl">Three steps.</h2>
+            <p className="text-xs uppercase tracking-wide2 text-coral-dark">How it works</p>
+            <h2 className="mt-2 font-brand text-5xl sm:text-7xl text-ink">Three steps.</h2>
           </ScrollReveal>
 
           <ol className="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-10">
             {steps.map((s, i) => (
               <ScrollReveal key={s.n} delay={i * 100} as="li">
-                <p className="font-display text-5xl text-accent">{s.n}</p>
+                <p className="font-brand text-7xl text-accent-dark leading-none">{s.n}</p>
                 <p className="mt-4 font-display text-2xl">{s.title}</p>
                 <p className="mt-2 text-ink-muted leading-relaxed">{s.body}</p>
               </ScrollReveal>
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-24 sm:py-32">
         <ScrollReveal className="max-w-2xl">
-          <h2 className="font-display text-4xl sm:text-5xl leading-[1.05]">
+          <h2 className="font-brand text-5xl sm:text-7xl text-ink leading-[1.0]">
             Have something to sell or trade?
           </h2>
           <p className="mt-4 text-ink-muted leading-relaxed">
@@ -95,13 +95,13 @@ export default function AboutPage() {
               href={`https://ig.me/m/${site.social.instagram}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-7 py-4 bg-ink text-sand-50 text-sm uppercase tracking-wide2 press hover:bg-accent-dark"
+              className="btn-tropical inline-flex items-center px-7 py-4 rounded-full text-sm uppercase tracking-wide2"
             >
               DM on Instagram
             </a>
             <Link
               href="/faq"
-              className="inline-flex items-center px-7 py-4 text-sm uppercase tracking-wide2 text-ink-muted press hover:text-ink"
+              className="inline-flex items-center px-7 py-4 rounded-full text-sm uppercase tracking-wide2 text-ink-muted press hover:text-ink"
             >
               Read the FAQ →
             </Link>

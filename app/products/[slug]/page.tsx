@@ -71,13 +71,13 @@ export default async function ProductPage({
         />
 
         <div className="lg:sticky lg:top-24">
-          <p className="text-xs uppercase tracking-wide2 text-ink-muted">{product.brand}</p>
-          <h1 className="mt-2 font-display text-3xl sm:text-[36px] leading-tight tracking-[-0.01em]">
+          <p className="text-xs uppercase tracking-wide2 text-accent-dark">{product.brand}</p>
+          <h1 className="mt-2 font-brand text-4xl sm:text-5xl leading-tight text-ink">
             {product.title}
           </h1>
 
           <div className="mt-5 flex items-baseline gap-3">
-            <p className="text-2xl text-accent-dark">{peso(product.price)}</p>
+            <p className="font-brand text-3xl text-accent-dark">{peso(product.price)}</p>
             {product.comparePrice && (
               <p className="text-base text-ink-muted line-through">
                 {peso(product.comparePrice)}
@@ -87,7 +87,7 @@ export default async function ProductPage({
 
           <div className="mt-5 flex flex-wrap items-center gap-2">
             <ConditionBadge condition={product.condition} />
-            <span className="inline-flex items-center rounded-full bg-sand-100 text-ink ring-1 ring-inset ring-sand-200 px-2.5 py-1 text-[11px] uppercase tracking-wide2">
+            <span className="inline-flex items-center rounded-full bg-sand-100 text-ink ring-1 ring-inset ring-accent/20 px-2.5 py-1 text-[11px] uppercase tracking-wide2">
               Size {product.size}
             </span>
             {product.sold ? (
@@ -178,7 +178,7 @@ export default async function ProductPage({
       {related.length > 0 && (
         <div className="mt-28 sm:mt-36">
           <ScrollReveal className="flex items-end justify-between mb-6 sm:mb-8">
-            <h2 className="font-display text-3xl sm:text-4xl">More in {product.category}</h2>
+            <h2 className="font-brand text-4xl sm:text-5xl text-ink capitalize">More in {product.category}</h2>
             <Link
               href={`/collections/${product.category}`}
               className="text-sm uppercase tracking-wide2 text-ink-muted press hover:text-ink"
@@ -201,7 +201,7 @@ export default async function ProductPage({
 
 function TrustItem({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex flex-col items-center text-center gap-2 py-3 border-y border-sand-200">
+    <div className="flex flex-col items-center text-center gap-2 py-3 border-y border-accent/20">
       <span className="text-accent-dark">{icon}</span>
       <span>{label}</span>
     </div>
