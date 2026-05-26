@@ -4,6 +4,8 @@
 
 :root {
   color-scheme: light;
+  --foreground: #1a1a18;
+  --background: #fafaf7;
 }
 
 html,

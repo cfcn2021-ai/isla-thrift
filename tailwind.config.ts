@@ -25,6 +25,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "Playfair Display", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        brand: ["var(--font-brand)", "Bagel Fat One", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         wide2: "0.18em",

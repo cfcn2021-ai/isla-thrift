@@ -47,7 +47,7 @@ export function Nav() {
 
           <Link
             href="/"
-            className="font-display text-[18px] sm:text-[20px] tracking-[0.12em] uppercase press"
+            className="font-brand text-[22px] sm:text-[26px] tracking-normal press"
           >
             {site.name}
           </Link>

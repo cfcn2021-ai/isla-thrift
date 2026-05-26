@@ -3,6 +3,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryTile } from "@/components/CategoryTile";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { HeroActions } from "@/components/HeroActions";
 import { getProductsInCollection } from "@/lib/products";
 import { site } from "@/data/site";
 
@@ -11,72 +12,44 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-14 lg:pt-20 pb-10 sm:pb-16">
-          <div className="grid gap-10 lg:gap-16 lg:grid-cols-12 items-center min-h-[78vh]">
-            <div className="lg:col-span-6">
-              <ScrollReveal>
-                <p className="text-xs uppercase tracking-wide2 text-ink-muted">
-                  Curated drops · Philippines
-                </p>
-              </ScrollReveal>
+      {/* HERO — full-bleed tropical background, mobile-first */}
+      <section className="relative -mt-16 min-h-[100svh] flex items-center justify-center overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/35" />
 
-              <ScrollReveal delay={80}>
-                <h1 className="mt-5 font-display text-[58px] sm:text-[72px] lg:text-[96px] leading-[0.95] tracking-[-0.02em]">
-                  Shop Bold.
-                </h1>
-              </ScrollReveal>
+        <div className="relative z-10 w-full mx-auto max-w-[1400px] px-5 sm:px-6 lg:px-10 pt-24 sm:pt-28 pb-24 text-center">
+          <ScrollReveal>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] sm:tracking-[0.3em] text-white/90 drop-shadow">
+              Curated drops · Philippines
+            </p>
+          </ScrollReveal>
 
-              <ScrollReveal delay={160}>
-                <p className="mt-6 font-display italic text-lg sm:text-xl text-ink-muted max-w-md">
-                  {site.tagline}
-                </p>
-              </ScrollReveal>
+          <ScrollReveal delay={80}>
+            <h1 className="mt-5 sm:mt-6 font-brand text-[64px] sm:text-[112px] lg:text-[168px] leading-[0.9] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
+              {site.name}
+            </h1>
+          </ScrollReveal>
 
-              <ScrollReveal delay={240}>
-                <div className="mt-10 flex flex-wrap items-center gap-3">
-                  <Link
-                    href="/collections/new-arrivals"
-                    className="inline-flex items-center px-7 py-4 bg-ink text-sand-50 text-sm uppercase tracking-wide2 press hover:bg-accent-dark"
-                  >
-                    Shop New Arrivals
-                  </Link>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center px-7 py-4 text-sm uppercase tracking-wide2 text-ink-muted press hover:text-ink"
-                  >
-                    The story →
-                  </Link>
-                </div>
-              </ScrollReveal>
-            </div>
+          <ScrollReveal delay={160}>
+            <p className="mt-5 sm:mt-6 font-display italic text-base sm:text-2xl text-white/95 max-w-[18rem] sm:max-w-xl mx-auto drop-shadow leading-snug">
+              {site.tagline}
+            </p>
+          </ScrollReveal>
 
-            <ScrollReveal
-              delay={140}
-              className="lg:col-span-6 relative h-[55vh] sm:h-[68vh] lg:h-[78vh]"
-            >
-              {/* PLACEHOLDER: replaced automatically once client uploads a featured
-                  hero photo to Sanity (any product with `tagNewArrival = true` uses
-                  the first image of the latest one). */}
-              <div className="relative w-full h-full overflow-hidden rounded-xl">
-                {newArrivals[0]?.images?.[0]?.url ? (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={newArrivals[0].images[0].url}
-                    alt={`${newArrivals[0].brand} ${newArrivals[0].title}`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <PlaceholderImage kind="hero" index={1} />
-                )}
-              </div>
-              <div className="absolute -bottom-5 -left-5 hidden lg:block">
-                <span className="inline-block bg-sand-50 px-3 py-1 text-[10px] uppercase tracking-wide2 text-ink-muted border border-sand-200">
-                  Drop · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
-                </span>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal delay={240}>
+            <HeroActions />
+          </ScrollReveal>
+
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
+            <span className="inline-block bg-white/85 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-wide2 text-ink rounded-full">
+              Drop · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </span>
           </div>
         </div>
       </section>

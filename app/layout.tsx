@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Bagel_Fat_One } from "next/font/google";
 import "./globals.css";
-import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { site } from "@/data/site";
@@ -15,6 +14,13 @@ const display = Playfair_Display({
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const brand = Bagel_Fat_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-brand",
   display: "swap",
 });
 
@@ -37,9 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${brand.variable}`}>
       <body className="font-sans bg-sand-50 text-ink">
-        <AnnouncementBar />
         <Nav />
         <main>{children}</main>
         <Footer />
