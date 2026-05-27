@@ -11,8 +11,9 @@ export function HeroActions() {
         size="lg"
         onClick={() => router.push("/collections/new-arrivals")}
         onMouseEnter={() => router.prefetch("/collections/new-arrivals")}
-        glassColor="oklch(100% 0 0 / 18%)"
-        className="w-full sm:w-auto text-white"
+        glassColor="oklch(100% 0 0 / 35%)"
+        className="w-full sm:w-auto"
+        contentClassName="text-ink font-extrabold tracking-wide"
       >
         Shop New Arrivals
       </GlassButton>
@@ -20,8 +21,9 @@ export function HeroActions() {
         size="lg"
         onClick={() => router.push("/about")}
         onMouseEnter={() => router.prefetch("/about")}
-        glassColor="oklch(100% 0 0 / 8%)"
-        className="w-full sm:w-auto text-white"
+        glassColor="oklch(100% 0 0 / 22%)"
+        className="w-full sm:w-auto"
+        contentClassName="text-ink font-extrabold tracking-wide"
       >
         The story →
       </GlassButton>

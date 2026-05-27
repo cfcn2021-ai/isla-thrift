@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryTile } from "@/components/CategoryTile";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { HeroActions } from "@/components/HeroActions";
 import { getProductsInCollection } from "@/lib/products";
 import { site } from "@/data/site";
@@ -21,7 +20,7 @@ export default async function HomePage() {
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/10 to-black/40" />
 
         <div className="relative z-10 w-full mx-auto max-w-[1400px] px-5 sm:px-6 lg:px-10 pt-24 sm:pt-28 pb-24 text-center">
           <ScrollReveal>
@@ -31,7 +30,13 @@ export default async function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={80}>
-            <h1 className="mt-5 sm:mt-6 font-brand text-[64px] sm:text-[112px] lg:text-[168px] leading-[0.9] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
+            <h1
+              className="mt-5 sm:mt-6 font-brand text-[64px] sm:text-[112px] lg:text-[168px] leading-[0.9] text-white"
+              style={{
+                textShadow:
+                  "0 2px 6px rgba(0,0,0,0.45), 0 8px 24px rgba(0,0,0,0.55), 0 16px 48px rgba(0,0,0,0.35)",
+              }}
+            >
               {site.name}
             </h1>
           </ScrollReveal>
@@ -45,39 +50,11 @@ export default async function HomePage() {
           <ScrollReveal delay={240}>
             <HeroActions />
           </ScrollReveal>
-
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
-            <span className="inline-block bg-white/85 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-wide2 text-ink rounded-full">
-              Drop · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* CATEGORY GRID */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-12 sm:mt-20">
-        <ScrollReveal className="flex items-end justify-between mb-6 sm:mb-10">
-          <div>
-            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Categories</p>
-            <h2 className="mt-2 font-brand text-4xl sm:text-6xl text-ink">Find your lane.</h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
-          {[
-            { href: "/collections/clothing", label: "Clothing" },
-            { href: "/collections/bags", label: "Bags" },
-            { href: "/collections/shoes", label: "Shoes" },
-          ].map((cat, i) => (
-            <ScrollReveal key={cat.href} delay={i * 80}>
-              <CategoryTile href={cat.href} label={cat.label} index={i} />
-            </ScrollReveal>
-          ))}
         </div>
       </section>
 
       {/* NEW ARRIVALS */}
-      <section className="mt-24 sm:mt-32">
+      <section className="mt-16 sm:mt-24">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <ScrollReveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 sm:mb-10">
             <div>
@@ -115,6 +92,28 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* CATEGORY GRID */}
+      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-24 sm:mt-32">
+        <ScrollReveal className="flex items-end justify-between mb-6 sm:mb-10">
+          <div>
+            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Categories</p>
+            <h2 className="mt-2 font-brand text-4xl sm:text-6xl text-ink">Find your lane.</h2>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
+          {[
+            { href: "/collections/clothing", label: "Clothing" },
+            { href: "/collections/bags", label: "Bags" },
+            { href: "/collections/shoes", label: "Shoes" },
+          ].map((cat, i) => (
+            <ScrollReveal key={cat.href} delay={i * 80}>
+              <CategoryTile href={cat.href} label={cat.label} index={i} />
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
       {/* ABOUT STRIP */}
       <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-28 sm:mt-40">
         <div className="grid gap-10 sm:gap-16 sm:grid-cols-12 items-start">
@@ -139,33 +138,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED COLLECTION BANNER */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-28 sm:mt-40">
-        <div className="grid gap-0 sm:gap-0 sm:grid-cols-2 overflow-hidden rounded-2xl bg-pool shadow-xl shadow-accent/10">
-          <ScrollReveal className="relative aspect-[4/3] sm:aspect-auto sm:min-h-[480px]">
-            <PlaceholderImage kind="featured" index={1} />
-          </ScrollReveal>
-          <ScrollReveal delay={120} className="p-8 sm:p-14 lg:p-20 flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-wide2 text-accent-dark">Featured</p>
-            <h2 className="mt-3 font-brand text-5xl sm:text-7xl text-ink leading-[0.95]">
-              Bags Drop.
-            </h2>
-            <p className="mt-4 text-ink-muted max-w-md leading-relaxed">
-              Designer carry — Louis Vuitton, Coach, Longchamp — fully authenticated and ready
-              to ship. Hand-picked from private collections across Manila.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="/collections/bags"
-                className="btn-tropical inline-flex items-center px-7 py-4 rounded-full text-sm uppercase tracking-wide2"
-              >
-                Shop the drop
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* CONDITION GUIDE */}
       <section className="mt-28 sm:mt-40 bg-pool">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-16 sm:py-24">
@@ -179,40 +151,42 @@ export default async function HomePage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-3 sm:gap-8">
             {[
               {
-                label: "Like New",
+                key: "like_new",
+                tone: "bg-yellow-100 text-yellow-500",
                 icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2l2.6 6.6L22 9.7l-5.4 4.9L18 22l-6-3.5L6 22l1.4-7.4L2 9.7l7.4-1.1L12 2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+                  <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.6 6.6L22 9.7l-5.4 4.9L18 22l-6-3.5L6 22l1.4-7.4L2 9.7l7.4-1.1L12 2Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
                   </svg>
                 ),
                 desc: "Worn once or twice. No visible flaws. Looks fresh out of the bag.",
               },
               {
-                label: "Good",
+                key: "good",
+                tone: "bg-emerald-100 text-emerald-600",
                 icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12l4 4 10-10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12l4 4 10-10" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 ),
                 desc: "Light, expected wear. Fully wearable. Documented in detail per item.",
               },
               {
-                label: "Fair",
+                key: "fair",
+                tone: "bg-sand-200 text-ink-muted",
                 icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="3" fill="currentColor" />
+                  <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 13c1.6-3.2 4-3.2 6 0s4.4 3.2 6 0 4.4-3.2 6 0" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 ),
                 desc: "Visible wear, character intact. Priced honestly for what it is.",
               },
             ].map((c, i) => (
-              <ScrollReveal key={c.label} delay={i * 80}>
-                <div className="bg-sand-50 border border-sand-200 rounded-xl p-7 h-full">
-                  <div className="w-10 h-10 rounded-full bg-sand-100 flex items-center justify-center text-accent-dark mb-5">
+              <ScrollReveal key={c.key} delay={i * 80}>
+                <div className="bg-sand-50 border border-sand-200 rounded-xl p-7 h-full flex flex-col items-center text-center">
+                  <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-5 ${c.tone}`}>
                     {c.icon}
                   </div>
-                  <p className="font-display text-2xl">{c.label}</p>
-                  <p className="mt-2 text-sm text-ink-muted leading-relaxed">{c.desc}</p>
+                  <p className="text-sm text-ink-muted leading-relaxed">{c.desc}</p>
                 </div>
               </ScrollReveal>
             ))}

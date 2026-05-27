@@ -14,13 +14,13 @@ export const sortOptions: { value: SortKey; label: string }[] = [
   { value: "price-desc", label: "Price: High to Low" },
 ];
 
-export type PriceBandKey = "lt1500" | "1500-5000" | "5000-15000" | "gt15000";
+export type PriceBandKey = "lt300" | "300-1000" | "1000-3000" | "gt3000";
 
 export const priceBands: { value: PriceBandKey; label: string }[] = [
-  { value: "lt1500", label: "Under ₱1,500" },
-  { value: "1500-5000", label: "₱1,500–₱5,000" },
-  { value: "5000-15000", label: "₱5,000–₱15,000" },
-  { value: "gt15000", label: "₱15,000+" },
+  { value: "lt300", label: "Under ₱300" },
+  { value: "300-1000", label: "₱300–₱1,000" },
+  { value: "1000-3000", label: "₱1,000–₱3,000" },
+  { value: "gt3000", label: "₱3,000+" },
 ];
 
 export const conditionOptions: { value: Condition; label: string }[] = [

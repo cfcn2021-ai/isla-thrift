@@ -18,6 +18,7 @@ import {
   saleProductsQuery,
 } from "@/sanity/queries";
 import type { CollectionSlug } from "@/data/collections";
+import { localProducts } from "@/data/local-products";
 
 export type Condition = "like_new" | "good" | "fair";
 export type Category = "clothing" | "bags" | "shoes";
@@ -77,7 +78,7 @@ export async function getAllProducts(): Promise<Product[]> {
         {},
         { next: { tags: productsTag } },
       ),
-    [],
+    localProducts,
     "getAllProducts",
   );
 }
@@ -90,7 +91,7 @@ export async function getProduct(slug: string): Promise<Product | null> {
         { slug },
         { next: { tags: [`product:${slug}`, ...productsTag] } },
       ),
-    null,
+    localProducts.find((p) => p.slug === slug) ?? null,
     `getProduct(${slug})`,
   );
 }
@@ -98,7 +99,7 @@ export async function getProduct(slug: string): Promise<Product | null> {
 export async function getAllProductSlugs(): Promise<string[]> {
   return safeFetch(
     () => client!.fetch<string[]>(productSlugsQuery),
-    [],
+    localProducts.map((p) => p.slug),
     "getAllProductSlugs",
   );
 }
@@ -129,7 +130,7 @@ export async function getAllBrands(): Promise<BrandSummary[]> {
         {},
         { next: { tags: productsTag } },
       ),
-    [] as string[],
+    localProducts.map((p) => p.brand),
     "getAllBrands",
   );
 
@@ -166,7 +167,7 @@ export async function getProductsByBrand(
         { brandLower: brand.name.toLowerCase() },
         { next: { tags: productsTag } },
       ),
-    [],
+    localProducts.filter((p) => slugifyBrand(p.brand) === brandSlug),
     `brand:${brandSlug}`,
   );
 
@@ -184,7 +185,7 @@ export async function getProductsInCollection(
           {},
           { next: { tags: productsTag } },
         ),
-      [],
+      localProducts.filter((p) => p.tagNewArrival),
       "new-arrivals",
     );
   }
@@ -196,7 +197,7 @@ export async function getProductsInCollection(
           {},
           { next: { tags: productsTag } },
         ),
-      [],
+      localProducts.filter((p) => p.tagSale),
       "sale",
     );
   }
@@ -207,7 +208,7 @@ export async function getProductsInCollection(
         { category: slug },
         { next: { tags: productsTag } },
       ),
-    [],
+    localProducts.filter((p) => p.category === slug),
     `category:${slug}`,
   );
 }
