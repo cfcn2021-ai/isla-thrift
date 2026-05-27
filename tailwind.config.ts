@@ -9,27 +9,27 @@ const config: Config = {
     extend: {
       colors: {
         sand: {
-          50: "#FAFCFB",
-          100: "#EAF4F0",
-          200: "#D5E6DF",
+          50: "#FDF8EE",
+          100: "#F5E9D2",
+          200: "#E8D2A8",
         },
         ink: {
-          DEFAULT: "#0E2A2E",
-          muted: "#5C7A7E",
+          DEFAULT: "#2B3F45",
+          muted: "#8A8270",
         },
         accent: {
-          DEFAULT: "#2DA9AE",
-          dark: "#1A6E72",
+          DEFAULT: "#4FB3C7",
+          dark: "#2D7A8A",
         },
         coral: {
-          DEFAULT: "#FF8B7D",
-          dark: "#E66B5F",
+          DEFAULT: "#FF9E84",
+          dark: "#E67B61",
         },
         sun: {
-          DEFAULT: "#FFD66B",
+          DEFAULT: "#FFC85C",
         },
         palm: {
-          DEFAULT: "#3D8B4F",
+          DEFAULT: "#5B9B6A",
         },
       },
       fontFamily: {

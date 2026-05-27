@@ -13,7 +13,7 @@ export function HeroActions() {
         onMouseEnter={() => router.prefetch("/collections/new-arrivals")}
         glassColor="oklch(100% 0 0 / 35%)"
         className="w-full sm:w-auto"
-        contentClassName="text-ink font-extrabold tracking-wide"
+        contentClassName="text-white font-extrabold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
       >
         Shop New Arrivals
       </GlassButton>
@@ -23,7 +23,7 @@ export function HeroActions() {
         onMouseEnter={() => router.prefetch("/about")}
         glassColor="oklch(100% 0 0 / 22%)"
         className="w-full sm:w-auto"
-        contentClassName="text-ink font-extrabold tracking-wide"
+        contentClassName="text-white font-extrabold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
       >
         The story →
       </GlassButton>

@@ -3,23 +3,27 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import {
+  clothingTypeOptions,
   conditionOptions,
   priceBands,
   sortOptions,
   type Facets,
   type SortKey,
 } from "@/lib/filterProducts";
-import type { Condition } from "@/lib/products";
+import type { ClothingType, Condition } from "@/lib/products";
 
 type Props = {
   facets: Facets;
   // Hide the brand facet on /brands/[slug] (the listing is already brand-scoped).
   showBrandFilter?: boolean;
+  // Show the clothing-Type facet (only on /collections/clothing).
+  showClothingTypeFilter?: boolean;
   // Current values, derived server-side from searchParams. We accept them as
   // primitives so the component is trivially serializable across the boundary.
   selectedConditions: Condition[];
   selectedBrandSlugs: string[];
   selectedPriceBands: string[];
+  selectedClothingTypes: ClothingType[];
   includeSold: boolean;
   sort: SortKey;
   totalShown: number;
@@ -28,9 +32,11 @@ type Props = {
 export function CollectionToolbar({
   facets,
   showBrandFilter = true,
+  showClothingTypeFilter = false,
   selectedConditions,
   selectedBrandSlugs,
   selectedPriceBands,
+  selectedClothingTypes,
   includeSold,
   sort,
   totalShown,
@@ -71,10 +77,29 @@ export function CollectionToolbar({
     selectedConditions.length +
     selectedBrandSlugs.length +
     selectedPriceBands.length +
+    selectedClothingTypes.length +
     (includeSold ? 1 : 0);
 
   const filterBody = (
     <>
+      {showClothingTypeFilter && facets.clothingTypes.length > 0 && (
+        <FacetGroup label="Type">
+          {clothingTypeOptions.map((t) => {
+            const facet = facets.clothingTypes.find((f) => f.value === t.value);
+            if (!facet) return null;
+            return (
+              <FacetCheckbox
+                key={t.value}
+                label={t.label}
+                count={facet.count}
+                checked={selectedClothingTypes.includes(t.value)}
+                onChange={() => toggleListValue("type", t.value)}
+              />
+            );
+          })}
+        </FacetGroup>
+      )}
+
       <FacetGroup label="Condition">
         {conditionOptions.map((c) => {
           const facet = facets.conditions.find((f) => f.value === c.value);

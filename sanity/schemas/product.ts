@@ -77,6 +77,27 @@ export const product = defineType({
       validation: (R) => R.required(),
     }),
     defineField({
+      name: "clothingType",
+      title: "Clothing type",
+      type: "string",
+      description:
+        "Only used when Category = Clothing. Drives the Type sub-filter on /collections/clothing.",
+      options: {
+        list: [
+          { title: "T-shirt", value: "tshirt" },
+          { title: "Polo", value: "polo" },
+          { title: "Hoodie", value: "hoodie" },
+          { title: "Sweater", value: "sweater" },
+          { title: "Jacket", value: "jacket" },
+          { title: "Pants", value: "pants" },
+          { title: "Shorts", value: "shorts" },
+          { title: "Skirt", value: "skirt" },
+          { title: "Dress", value: "dress" },
+        ],
+      },
+      hidden: ({ document }) => document?.category !== "clothing",
+    }),
+    defineField({
       name: "tagSale",
       title: "Show in Sale collection",
       type: "boolean",

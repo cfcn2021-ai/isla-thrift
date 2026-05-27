@@ -103,12 +103,25 @@ export default async function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
           {[
-            { href: "/collections/clothing", label: "Clothing" },
+            {
+              href: "/collections/clothing",
+              label: "Clothing",
+              bgImage: "/category-clothing.jpg",
+              bgPosition: "50% 88%",
+              bgScale: 1.7,
+            },
             { href: "/collections/bags", label: "Bags" },
             { href: "/collections/shoes", label: "Shoes" },
           ].map((cat, i) => (
             <ScrollReveal key={cat.href} delay={i * 80}>
-              <CategoryTile href={cat.href} label={cat.label} index={i} />
+              <CategoryTile
+                href={cat.href}
+                label={cat.label}
+                index={i}
+                bgImage={cat.bgImage}
+                bgPosition={cat.bgPosition}
+                bgScale={cat.bgScale}
+              />
             </ScrollReveal>
           ))}
         </div>

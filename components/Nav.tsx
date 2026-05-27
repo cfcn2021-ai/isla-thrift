@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MobileMenu } from "./MobileMenu";
+import { SearchOverlay } from "./SearchOverlay";
 import { site } from "@/data/site";
 
 const links = [
@@ -17,6 +18,7 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -65,7 +67,11 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-1.5">
-            <button aria-label="Search" className="press p-2 hover:text-accent-dark">
+            <button
+              aria-label="Search"
+              onClick={() => setSearchOpen(true)}
+              className="press p-2 hover:text-accent-dark"
+            >
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                 <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5" />
                 <path d="m14 14 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -84,6 +90,7 @@ export function Nav() {
       </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} links={links} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

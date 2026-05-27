@@ -61,6 +61,7 @@ export default async function BrandPage({
     condition: pickString(sp.condition),
     // No brand filter on brand pages (already scoped).
     price: pickString(sp.price),
+    type: pickString(sp.type),
     includeSold: pickString(sp["include-sold"]),
   };
 
@@ -92,6 +93,7 @@ export default async function BrandPage({
           selectedConditions={[...filters.conditions]}
           selectedBrandSlugs={[...filters.brandSlugs]}
           selectedPriceBands={[...filters.priceBandKeys]}
+          selectedClothingTypes={[...filters.clothingTypes]}
           includeSold={filters.includeSold}
           sort={filters.sort}
           totalShown={visible.length}

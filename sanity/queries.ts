@@ -9,6 +9,7 @@ const productFields = `
   size,
   condition,
   category,
+  clothingType,
   tagSale,
   tagNewArrival,
   measurements,

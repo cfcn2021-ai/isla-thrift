@@ -4,7 +4,13 @@
 // JS — our catalog is small (dozens, not thousands) so query-time filtering in Sanity
 // would be premature complexity.
 
-import { slugifyBrand, type Condition, type Product } from "./products";
+import {
+  clothingTypeLabels,
+  slugifyBrand,
+  type ClothingType,
+  type Condition,
+  type Product,
+} from "./products";
 
 export type SortKey = "newest" | "price-asc" | "price-desc";
 
@@ -29,6 +35,10 @@ export const conditionOptions: { value: Condition; label: string }[] = [
   { value: "fair", label: "Fair" },
 ];
 
+export const clothingTypeOptions: { value: ClothingType; label: string }[] = (
+  Object.keys(clothingTypeLabels) as ClothingType[]
+).map((v) => ({ value: v, label: clothingTypeLabels[v] }));
+
 // URL search params we read. Values are CSV strings (e.g. "good,like_new").
 // We keep `URLSearchParams` semantics so a missing key === undefined.
 export type FilterParams = {
@@ -36,6 +46,7 @@ export type FilterParams = {
   condition?: string;
   brand?: string;
   price?: string;
+  type?: string;
   // Default behaviour HIDES sold items so the page leads with what shoppers can
   // actually buy — explicit override surfaces the sold archive for browsing.
   includeSold?: string;
@@ -61,6 +72,7 @@ export type AppliedFilters = {
   conditions: Set<Condition>;
   brandSlugs: Set<string>;
   priceBandKeys: Set<string>;
+  clothingTypes: Set<ClothingType>;
   includeSold: boolean;
   sort: SortKey;
 };
@@ -70,6 +82,7 @@ export function parseFilters(params: FilterParams): AppliedFilters {
     conditions: new Set(parseList(params.condition) as Condition[]),
     brandSlugs: new Set(parseList(params.brand)),
     priceBandKeys: new Set(parseList(params.price)),
+    clothingTypes: new Set(parseList(params.type) as ClothingType[]),
     includeSold: params.includeSold === "1",
     sort: ((["newest", "price-asc", "price-desc"] as const).includes(
       params.sort as SortKey,
@@ -100,6 +113,11 @@ export function applyFilters(
       );
       if (!matchesAny) return false;
     }
+    if (filters.clothingTypes.size > 0) {
+      if (!p.clothingType || !filters.clothingTypes.has(p.clothingType)) {
+        return false;
+      }
+    }
     return true;
   });
 
@@ -127,6 +145,7 @@ export function applyFilters(
 export type Facets = {
   brands: { slug: string; name: string; count: number }[];
   conditions: { value: Condition; count: number }[];
+  clothingTypes: { value: ClothingType; count: number }[];
   soldCount: number;
   totalCount: number;
 };
@@ -134,6 +153,7 @@ export type Facets = {
 export function computeFacets(products: Product[]): Facets {
   const brandMap = new Map<string, { name: string; count: number }>();
   const condMap = new Map<Condition, number>();
+  const typeMap = new Map<ClothingType, number>();
   let soldCount = 0;
 
   for (const p of products) {
@@ -143,6 +163,9 @@ export function computeFacets(products: Product[]): Facets {
     else brandMap.set(slug, { name: p.brand, count: 1 });
 
     condMap.set(p.condition, (condMap.get(p.condition) ?? 0) + 1);
+    if (p.clothingType) {
+      typeMap.set(p.clothingType, (typeMap.get(p.clothingType) ?? 0) + 1);
+    }
     if (p.sold) soldCount += 1;
   }
 
@@ -153,6 +176,9 @@ export function computeFacets(products: Product[]): Facets {
     conditions: conditionOptions
       .map((c) => ({ value: c.value, count: condMap.get(c.value) ?? 0 }))
       .filter((c) => c.count > 0),
+    clothingTypes: clothingTypeOptions
+      .map((t) => ({ value: t.value, count: typeMap.get(t.value) ?? 0 }))
+      .filter((t) => t.count > 0),
     soldCount,
     totalCount: products.length,
   };

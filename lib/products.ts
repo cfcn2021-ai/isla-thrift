@@ -22,6 +22,28 @@ import { localProducts } from "@/data/local-products";
 
 export type Condition = "like_new" | "good" | "fair";
 export type Category = "clothing" | "bags" | "shoes";
+export type ClothingType =
+  | "tshirt"
+  | "polo"
+  | "hoodie"
+  | "sweater"
+  | "jacket"
+  | "pants"
+  | "shorts"
+  | "skirt"
+  | "dress";
+
+export const clothingTypeLabels: Record<ClothingType, string> = {
+  tshirt: "T-shirt",
+  polo: "Polo",
+  hoodie: "Hoodie",
+  sweater: "Sweater",
+  jacket: "Jacket",
+  pants: "Pants",
+  shorts: "Shorts",
+  skirt: "Skirt",
+  dress: "Dress",
+};
 
 export type ProductImage = {
   url: string;
@@ -39,6 +61,7 @@ export type Product = {
   size: string;
   condition: Condition;
   category: Category;
+  clothingType?: ClothingType;
   tagSale?: boolean;
   tagNewArrival?: boolean;
   measurements?: string;

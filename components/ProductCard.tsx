@@ -27,12 +27,12 @@ export function ProductCard({
       }`}
     >
       <div
-        className={`relative aspect-[4/5] overflow-hidden rounded-xl border border-sand-200 bg-white ${
+        className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-white transition-colors duration-500 ease-out-soft group-hover:bg-transparent ${
           product.sold ? "[&_img]:grayscale-[55%] [&_img]:opacity-90" : ""
         }`}
       >
         {/* Primary image */}
-        <div className="absolute inset-0 transition-transform duration-500 ease-out-soft group-hover:scale-[1.03]">
+        <div className="absolute inset-0 transition-transform duration-500 ease-out-soft group-hover:scale-[1.06]">
           <ProductImage
             image={primary}
             fallbackKind="product-card"

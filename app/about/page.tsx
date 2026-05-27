@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { site } from "@/data/site";
 
@@ -55,7 +54,12 @@ export default function AboutPage() {
 
           <ScrollReveal delay={120} className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl shadow-accent/10">
-              <PlaceholderImage kind="about" index={2} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/about-story.jpg"
+                alt="Isla Thrifts curators laying out new arrivals"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </ScrollReveal>
         </div>

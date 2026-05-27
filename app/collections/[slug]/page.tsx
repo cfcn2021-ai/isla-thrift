@@ -56,6 +56,7 @@ export default async function CollectionPage({
     condition: pickString(sp.condition),
     brand: pickString(sp.brand),
     price: pickString(sp.price),
+    type: pickString(sp.type),
     includeSold: pickString(sp["include-sold"]),
   };
 
@@ -83,9 +84,11 @@ export default async function CollectionPage({
       <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
         <CollectionToolbar
           facets={facets}
+          showClothingTypeFilter={collection.slug === "clothing"}
           selectedConditions={[...filters.conditions]}
           selectedBrandSlugs={[...filters.brandSlugs]}
           selectedPriceBands={[...filters.priceBandKeys]}
+          selectedClothingTypes={[...filters.clothingTypes]}
           includeSold={filters.includeSold}
           sort={filters.sort}
           totalShown={visible.length}
