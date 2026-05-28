@@ -1,7 +1,7 @@
 import { conditionLabels, type Condition } from "@/lib/products";
 
 const styles: Record<Condition, string> = {
-  like_new: "bg-sun text-ink ring-sun",
+  like_new: "bg-sun/25 text-sun ring-sun/50",
   good: "bg-accent/15 text-accent-dark ring-accent/30",
   fair: "bg-sand-200 text-ink-muted ring-sand-200",
 };

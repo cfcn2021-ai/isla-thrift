@@ -27,6 +27,7 @@ const config: Config = {
         },
         sun: {
           DEFAULT: "#FFC85C",
+          dark: "#B8861A",
         },
         palm: {
           DEFAULT: "#5B9B6A",

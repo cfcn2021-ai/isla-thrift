@@ -171,7 +171,7 @@ export default async function HomePage() {
             {[
               {
                 key: "like_new",
-                tone: "bg-sun text-ink",
+                tone: "bg-sun/25 text-sun",
                 icon: (
                   <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l2.6 6.6L22 9.7l-5.4 4.9L18 22l-6-3.5L6 22l1.4-7.4L2 9.7l7.4-1.1L12 2Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
