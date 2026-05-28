@@ -1,9 +1,9 @@
 import { conditionLabels, type Condition } from "@/lib/products";
 
 const styles: Record<Condition, string> = {
-  like_new: "bg-sun/25 text-sun ring-sun/50",
-  good: "bg-accent/15 text-accent-dark ring-accent/30",
-  fair: "bg-sand-200 text-ink-muted ring-sand-200",
+  like_new: "bg-gray-200 text-sun ring-sun/50",
+  good: "bg-gray-200 text-accent-dark ring-accent/30",
+  fair: "bg-gray-200 text-ink-muted ring-sand-200",
 };
 
 const icons: Record<Condition, React.ReactElement> = {

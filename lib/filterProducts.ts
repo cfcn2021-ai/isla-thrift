@@ -61,8 +61,9 @@ export type FilterParams = {
   brand?: string;
   price?: string;
   type?: string;
-  // Default behaviour HIDES sold items so the page leads with what shoppers can
-  // actually buy — explicit override surfaces the sold archive for browsing.
+  // Default behaviour SHOWS sold items (sorted last, marked "Sold") so the catalog
+  // never looks deserted as inventory turns over. `include-sold=0` hides them for
+  // shoppers who only want what's currently buyable.
   includeSold?: string;
 };
 
@@ -97,7 +98,7 @@ export function parseFilters(params: FilterParams): AppliedFilters {
     brandSlugs: new Set(parseList(params.brand)),
     priceBandKeys: new Set(parseList(params.price)),
     clothingTypes: new Set(parseList(params.type) as ClothingType[]),
-    includeSold: params.includeSold === "1",
+    includeSold: params.includeSold !== "0",
     sort: ((["newest", "price-asc", "price-desc"] as const).includes(
       params.sort as SortKey,
     )
@@ -106,12 +107,16 @@ export function parseFilters(params: FilterParams): AppliedFilters {
   };
 }
 
+// How many sold items a collection/brand page will surface. Keeps pages looking
+// populated as inventory turns over, without letting them become a wall of "Sold"
+// once the store has hundreds of past sales. Bump or lower this single number to taste.
+export const MAX_SOLD_PER_PAGE = 8;
+
 export function applyFilters(
   products: Product[],
   filters: AppliedFilters,
 ): Product[] {
-  const filtered = products.filter((p) => {
-    if (!filters.includeSold && p.sold) return false;
+  const matchesFacets = (p: Product): boolean => {
     if (filters.conditions.size > 0 && !filters.conditions.has(p.condition)) {
       return false;
     }
@@ -133,24 +138,33 @@ export function applyFilters(
       }
     }
     return true;
-  });
+  };
+
+  const matched = products.filter(matchesFacets);
+  const available = matched.filter((p) => !p.sold);
+  // Source order from Sanity is `sold asc, _createdAt desc`, so slicing the sold
+  // subset keeps the most recently sold pieces.
+  const sold = filters.includeSold
+    ? matched.filter((p) => p.sold).slice(0, MAX_SOLD_PER_PAGE)
+    : [];
+
+  const result = [...available, ...sold];
 
   switch (filters.sort) {
     case "price-asc":
-      filtered.sort((a, b) => a.price - b.price);
+      result.sort((a, b) => a.price - b.price);
       break;
     case "price-desc":
-      filtered.sort((a, b) => b.price - a.price);
+      result.sort((a, b) => b.price - a.price);
       break;
     case "newest":
     default:
-      // Source order from Sanity is already `sold asc, _createdAt desc`. When
-      // sold are included we want unsold first within "newest" — re-stabilise.
-      filtered.sort((a, b) => Number(!!a.sold) - Number(!!b.sold));
+      // Unsold first within "newest"; the capped sold tail follows.
+      result.sort((a, b) => Number(!!a.sold) - Number(!!b.sold));
       break;
   }
 
-  return filtered;
+  return result;
 }
 
 // Facet counts for the sidebar. Counts reflect the FULL product set (not the

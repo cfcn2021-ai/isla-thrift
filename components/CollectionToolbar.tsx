@@ -82,7 +82,7 @@ export function CollectionToolbar({
     selectedBrandSlugs.length +
     selectedPriceBands.length +
     selectedClothingTypes.length +
-    (includeSold ? 1 : 0);
+    (!includeSold ? 1 : 0);
 
   const filterBody = (
     <>
@@ -148,10 +148,10 @@ export function CollectionToolbar({
       {facets.soldCount > 0 && (
         <FacetGroup label="Availability">
           <FacetCheckbox
-            label={`Show sold archive`}
+            label={`Hide sold items`}
             count={facets.soldCount}
-            checked={includeSold}
-            onChange={() => setScalar("include-sold", includeSold ? null : "1")}
+            checked={!includeSold}
+            onChange={() => setScalar("include-sold", includeSold ? "0" : null)}
           />
         </FacetGroup>
       )}

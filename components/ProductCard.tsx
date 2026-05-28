@@ -17,7 +17,6 @@ export function ProductCard({
   width?: "auto" | "fixed";
 }) {
   const primary = product.images?.[0];
-  const secondary = product.images?.[1];
 
   return (
     <Link
@@ -41,21 +40,6 @@ export function ProductCard({
             sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 280px"
           />
         </div>
-
-        {/* Secondary image — cross-fades in on hover (desktop only, no-op on touch).
-            Only renders when a second image actually exists so we don't double the
-            network cost for single-image listings. */}
-        {secondary && (
-          <div className="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out-soft group-hover:opacity-100 motion-reduce:hidden">
-            <ProductImage
-              image={secondary}
-              fallbackKind="product-card"
-              fallbackIndex={index + 1}
-              alt={`${product.brand} ${product.title} — alternate view`}
-              sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 280px"
-            />
-          </div>
-        )}
 
         {product.sold && (
           <div className="absolute top-3 left-3 z-10">
