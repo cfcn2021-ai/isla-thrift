@@ -22,7 +22,7 @@ export default async function BrandsIndexPage() {
               Brands
             </h1>
             <p className="mt-4 max-w-2xl text-ink-muted">
-              Every label we&apos;ve sourced and authenticated. From luxury houses to streetwear staples.
+              Every label we&apos;ve pulled off the rack and kept. From luxury houses to streetwear staples.
             </p>
           </ScrollReveal>
         </div>

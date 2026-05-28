@@ -74,8 +74,8 @@ export default async function HomePage() {
 
         <div className="mx-auto max-w-[1400px]">
           {newArrivals.length === 0 ? (
-            <div className="mx-4 sm:mx-6 lg:mx-10 border border-dashed border-sand-200 rounded-xl py-16 text-center">
-              <p className="font-display text-2xl">No drops yet.</p>
+            <div className="mx-4 sm:mx-6 lg:mx-10 bg-pool rounded-2xl py-16 text-center">
+              <p className="font-brand text-3xl text-ink">No drops yet.</p>
               <p className="mt-2 text-sm text-ink-muted">
                 Add your first product in the Studio at <code>/studio</code>.
               </p>
@@ -171,7 +171,7 @@ export default async function HomePage() {
             {[
               {
                 key: "like_new",
-                tone: "bg-yellow-100 text-yellow-500",
+                tone: "bg-sun text-ink",
                 icon: (
                   <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l2.6 6.6L22 9.7l-5.4 4.9L18 22l-6-3.5L6 22l1.4-7.4L2 9.7l7.4-1.1L12 2Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
@@ -181,7 +181,7 @@ export default async function HomePage() {
               },
               {
                 key: "good",
-                tone: "bg-emerald-100 text-emerald-600",
+                tone: "bg-accent/15 text-accent-dark",
                 icon: (
                   <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
                     <path d="M5 12l4 4 10-10" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />

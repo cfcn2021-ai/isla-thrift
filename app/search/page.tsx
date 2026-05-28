@@ -6,7 +6,7 @@ import { getAllProducts, type Product } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Search",
-  description: "Search across every authenticated piece on Isla Thrifts.",
+  description: "Search across every curated piece on Isla Thrifts.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -57,7 +57,7 @@ export default async function SearchPage({
             </h1>
             <p className="mt-4 max-w-2xl text-ink-muted">
               {q
-                ? `${results.length} ${results.length === 1 ? "match" : "matches"} across every authenticated piece.`
+                ? `${results.length} ${results.length === 1 ? "match" : "matches"} across every curated piece.`
                 : "Search by brand, title, category, size, or condition — Nike, Louis Vuitton, denim, bag, size 8, like new."}
             </p>
 

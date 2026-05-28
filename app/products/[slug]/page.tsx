@@ -120,7 +120,7 @@ export default async function ProductPage({
                   <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               }
-              label="Authenticated"
+              label="Curated"
             />
             <TrustItem
               icon={
@@ -149,7 +149,7 @@ export default async function ProductPage({
                   ? [{ q: "Measurements", a: <p>{product.measurements}</p> }]
                   : []),
                 ...(product.authentication
-                  ? [{ q: "Authentication", a: <p>{product.authentication}</p> }]
+                  ? [{ q: "Why we picked it", a: <p>{product.authentication}</p> }]
                   : []),
                 {
                   q: "Shipping",

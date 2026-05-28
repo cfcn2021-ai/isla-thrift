@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (!result) return {};
   return {
     title: result.brand.name,
-    description: `Shop authenticated ${result.brand.name} pieces — pre-owned, condition-graded, and ready to ship.`,
+    description: `Shop ${result.brand.name} pieces curated from PH thrift stores — pre-owned, condition-graded, and ready to ship.`,
   };
 }
 
@@ -71,22 +71,27 @@ export default async function BrandPage({
   const inStockCount = products.filter((p) => !p.sold).length;
 
   return (
-    <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-10 sm:pt-16 pb-20">
-      <ScrollReveal>
-        <div className="flex items-baseline gap-3 text-xs uppercase tracking-wide2 text-ink-muted">
-          <Link href="/brands" className="press hover:text-ink">Brands</Link>
-          <span>/</span>
-          <span>{brand.name}</span>
+    <>
+      <div className="bg-pool">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-10 sm:pt-16 pb-10 sm:pb-14">
+          <ScrollReveal>
+            <div className="flex items-baseline gap-3 text-xs uppercase tracking-wide2 text-accent-dark">
+              <Link href="/brands" className="press hover:text-ink">Brands</Link>
+              <span className="text-ink-muted">/</span>
+              <span className="text-ink-muted">{brand.name}</span>
+            </div>
+            <h1 className="mt-3 font-brand text-5xl sm:text-7xl lg:text-8xl text-ink leading-[0.95]">
+              {brand.name}
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              {inStockCount} available · {brand.count} total pieces sourced.
+            </p>
+          </ScrollReveal>
         </div>
-        <h1 className="mt-3 font-display text-4xl sm:text-6xl tracking-[-0.01em]">
-          {brand.name}
-        </h1>
-        <p className="mt-3 max-w-2xl text-ink-muted">
-          {inStockCount} available · {brand.count} total pieces sourced.
-        </p>
-      </ScrollReveal>
+      </div>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
+      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-20">
+      <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
         <CollectionToolbar
           facets={facets}
           showBrandFilter={false}
@@ -103,8 +108,8 @@ export default async function BrandPage({
           <CollectionSortBar sort={filters.sort} totalShown={visible.length} />
 
           {visible.length === 0 ? (
-            <div className="border border-dashed border-sand-200 rounded-xl py-20 text-center">
-              <p className="font-display text-2xl">
+            <div className="bg-pool rounded-2xl py-20 text-center">
+              <p className="font-brand text-3xl text-ink">
                 {products.length === 0
                   ? `Nothing in stock for ${brand.name} yet.`
                   : "No matches for those filters."}
@@ -127,5 +132,6 @@ export default async function BrandPage({
         </div>
       </div>
     </section>
+    </>
   );
 }

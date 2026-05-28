@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 const steps = [
   {
     n: "01",
-    title: "Find",
-    body: "We hunt private collections, estate clear-outs, and the rare seller across Manila who knows what they have.",
+    title: "Hunt",
+    body: "We comb through thrift stores across the country — racks, bins, and back rooms — so you don't have to. The work is in the sifting.",
   },
   {
     n: "02",
-    title: "Authenticate",
-    body: "Every branded item is verified — stitching, hardware, date codes, materials. If it doesn't pass, it doesn't list.",
+    title: "Curate",
+    body: "Only branded, quality pieces make it out. If it's not a real label or it's not built to last, it doesn't list — no digging required on your end.",
   },
   {
     n: "03",

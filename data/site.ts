@@ -11,12 +11,11 @@ export const site = {
   url: "https://islathrifts.com",
   social: {
     instagram: "islathrifts",
-    tiktok: "islathrifts",
     facebook: "islathrifts",
     messenger: "islathrifts",
   },
   shipping: {
     notice:
-      "Nationwide delivery · Shipping quoted on DM · All items are authenticated",
+      "Nationwide delivery · Shipping quoted on DM · Curated for quality",
   },
 } as const;

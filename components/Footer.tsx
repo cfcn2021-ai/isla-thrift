@@ -7,7 +7,7 @@ import {
 } from "@/lib/dm";
 
 const trustPillars = [
-  "Authenticated before listing",
+  "Curated for quality",
   "Reserve via DM — no payment until you confirm",
   "Nationwide shipping",
 ];
@@ -97,7 +97,7 @@ export function Footer() {
             <p className="md:text-right">
               Reserve any item via DM. Payment instructions sent after we confirm availability — GCash, Maya, bank transfer, or COD.
             </p>
-            <p className="md:col-span-2">All items are pre-owned and authenticated before listing.</p>
+            <p className="md:col-span-2">All items are pre-owned and curated for quality before listing.</p>
           </div>
         </div>
       </footer>

@@ -36,10 +36,6 @@ export function instagramProfileUrl(): string {
   return `https://instagram.com/${site.social.instagram}`;
 }
 
-export function tiktokProfileUrl(): string {
-  return `https://tiktok.com/@${site.social.tiktok}`;
-}
-
 export function facebookProfileUrl(): string {
   return `https://facebook.com/${site.social.facebook}`;
 }

@@ -4,17 +4,17 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "FAQ & Shipping",
-  description: "How Isla Thrifts authenticates, ships, and handles payments.",
+  description: "How Isla Thrifts sources, ships, and handles payments.",
 };
 
 const faqs = [
   {
-    q: "How do I know items are authentic?",
-    a: "Every branded item is verified before listing — stitching, hardware, date codes, materials, and reference comparisons. The authentication notes for each piece appear on its product page. If something can't be verified, it doesn't go up.",
+    q: "Are these real branded pieces?",
+    a: "Yes — that's the whole point of what we do. We comb through thrift stores ourselves and only list pieces that are clearly the real label and in solid, wearable condition. If we're not confident in a piece, we leave it on the rack. What you see online is what we'd wear ourselves.",
   },
   {
     q: "How do I reserve and pay?",
-    a: "Tap Reserve on any item — it opens a prefilled DM on Instagram or Messenger with the product details. We confirm availability, then send payment instructions (GCash, Maya, bank transfer, or COD). The item is held for 24 hours once you confirm.",
+    a: "Tap Reserve on any item — Messenger opens with the product details already typed in. Instagram doesn't let us prefill the chat, so we copy the reservation text to your clipboard automatically — just paste it once IG opens. We confirm availability, then send payment instructions (GCash, Maya, bank transfer, or COD). The item is held for 24 hours once you confirm.",
   },
   {
     q: "What is your return policy?",
@@ -51,7 +51,7 @@ export default function FAQPage() {
           FAQ &amp; Shipping
         </h1>
         <p className="mt-5 max-w-xl text-ink-muted leading-relaxed">
-          Quick answers on how we authenticate, ship, and handle payments.
+          Quick answers on how we source, ship, and handle payments.
         </p>
       </ScrollReveal>
 
