@@ -155,8 +155,9 @@ export default async function ProductPage({
                   q: "Shipping",
                   a: (
                     <p>
-                      Nationwide via J&amp;T, LBC, or Grab same-day in Metro Manila.
-                      Free shipping on orders ₱1,500 and above. Tracking sent after dispatch.
+                      Nationwide via J&amp;T or LBC. Shipping rate depends on where
+                      you&apos;re located — we quote your fee on DM before payment.
+                      Tracking sent after dispatch.
                     </p>
                   ),
                 },

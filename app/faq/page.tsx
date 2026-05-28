@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Accordion } from "@/components/Accordion";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "FAQ & Shipping",
@@ -23,11 +22,11 @@ const faqs = [
   },
   {
     q: "How long does shipping take?",
-    a: "Metro Manila: 1–2 days via Grab or J&T. Provincial: 3–7 days via J&T or LBC depending on location. Tracking is sent the moment we dispatch.",
+    a: "Shipping time depends on where you are in the Philippines — usually a couple of days for nearby areas and up to a week for farther provinces via J&T or LBC. Tracking is sent the moment we dispatch.",
   },
   {
     q: "Do you ship nationwide?",
-    a: "Yes — anywhere in the Philippines. Free shipping on orders ₱1,500 and above.",
+    a: "Yes — anywhere in the Philippines. Shipping rates depend on your location and are quoted on DM before you pay.",
   },
   {
     q: "What payment methods do you accept?",
@@ -62,26 +61,27 @@ export default function FAQPage() {
 
       <div className="mt-20 grid gap-8 sm:grid-cols-2">
         <ScrollReveal>
-          <div className="rounded-2xl bg-pool p-7 h-full">
+          <div className="rounded-2xl bg-sand-100 p-7 h-full">
             <p className="text-xs uppercase tracking-wide2 text-accent-dark">Shipping map</p>
             <h3 className="mt-2 font-brand text-3xl text-ink">Nationwide PH delivery</h3>
-            <div className="mt-5">
-              <svg viewBox="0 0 200 240" className="w-full max-w-[200px] h-auto text-accent-dark">
-                {/* Simplified PH archipelago silhouette */}
-                <path
-                  d="M70 25c8-2 18 2 22 12s-2 22-10 26c-6 3-14 3-18 9s-2 16 4 22 16 6 22 14c5 8 4 20-2 26-7 8-20 4-30 10-10 5-14 18-22 22-9 4-22-4-26-14s4-22 14-26c8-3 18-2 22-10 4-8-2-16-2-24s10-14 18-18c8-4 14-12 14-22-2-12 4-22 14-26Z"
-                  fill="currentColor"
-                  opacity="0.15"
-                />
-                <circle cx="100" cy="80" r="4" fill="currentColor" />
-                <circle cx="78" cy="130" r="3" fill="currentColor" opacity="0.7" />
-                <circle cx="122" cy="170" r="3" fill="currentColor" opacity="0.7" />
-                <circle cx="92" cy="200" r="3" fill="currentColor" opacity="0.7" />
-              </svg>
+            <div className="mt-5 flex justify-center">
+              <div
+                aria-hidden
+                className="w-full max-w-[260px] aspect-square bg-palm"
+                style={{
+                  WebkitMaskImage: "url(/ph-map.png)",
+                  maskImage: "url(/ph-map.png)",
+                  WebkitMaskSize: "165%",
+                  maskSize: "165%",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  maskPosition: "center",
+                }}
+              />
             </div>
             <p className="mt-4 text-sm text-ink-muted leading-relaxed">
-              Metro Manila: 1–2 days. Provincial: 3–7 days. Free shipping on orders
-              ₱{site.shipping.freeAbove.toLocaleString("en-PH")} and above.
+              Delivery time and shipping rates depend on where you are. We quote your shipping fee on DM before you pay.
             </p>
           </div>
         </ScrollReveal>

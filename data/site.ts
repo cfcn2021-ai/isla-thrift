@@ -16,8 +16,7 @@ export const site = {
     messenger: "islathrifts",
   },
   shipping: {
-    freeAbove: 1500,
     notice:
-      "Free shipping on orders ₱1,500 and above · Nationwide delivery · All items are authenticated",
+      "Nationwide delivery · Shipping quoted on DM · All items are authenticated",
   },
 } as const;

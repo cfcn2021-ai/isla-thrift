@@ -107,11 +107,17 @@ export default async function HomePage() {
               href: "/collections/clothing",
               label: "Clothing",
               bgImage: "/category-clothing.jpg",
-              bgPosition: "50% 88%",
-              bgScale: 1.7,
+              bgPosition: "center",
+              bgScale: 1,
             },
             { href: "/collections/bags", label: "Bags" },
-            { href: "/collections/shoes", label: "Shoes" },
+            {
+              href: "/collections/shoes",
+              label: "Shoes",
+              bgImage: "/category-shoes.jpg",
+              bgPosition: "center",
+              bgScale: 1.05,
+            },
           ].map((cat, i) => (
             <ScrollReveal key={cat.href} delay={i * 80}>
               <CategoryTile
