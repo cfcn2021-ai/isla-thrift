@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { instagramReserveUrl, messengerReserveUrl } from "@/lib/dm";
+import {
+  instagramReserveUrl,
+  messengerReserveUrl,
+  reserveMessage,
+} from "@/lib/dm";
 import type { Product } from "@/lib/products";
 
 type Props = {
@@ -12,6 +16,22 @@ type Props = {
 
 export function ReserveButton({ product, variant = "primary", full = false }: Props) {
   const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  async function handleInstagramClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    // Instagram's deep link can't carry the prefilled text, so we drop the
+    // reservation message on the clipboard right before the chat opens. The
+    // anchor still navigates normally — we don't preventDefault.
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(reserveMessage(product));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 4000);
+    } catch {
+      // Clipboard can fail in non-secure contexts or older browsers. Silently
+      // continue — the user can still type the message themselves.
+    }
+  }
 
   if (product.sold) {
     return (
@@ -44,7 +64,8 @@ export function ReserveButton({ product, variant = "primary", full = false }: Pr
         }`}
       >
         <a
-          href={instagramReserveUrl(product)}
+          href={instagramReserveUrl()}
+          onClick={handleInstagramClick}
           target="_blank"
           rel="noopener noreferrer"
           className={`btn-coral ${full ? "w-full" : ""} inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm uppercase tracking-wide2`}
@@ -59,6 +80,14 @@ export function ReserveButton({ product, variant = "primary", full = false }: Pr
         >
           <MessengerGlyph /> Messenger
         </a>
+        <p
+          aria-live="polite"
+          className={`text-[11px] text-center text-ink-muted transition-opacity duration-200 ${
+            copied ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          Reservation text copied — paste it in the Instagram chat.
+        </p>
       </div>
     </div>
   );

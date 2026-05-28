@@ -11,6 +11,7 @@ import {
   applyFilters,
   computeFacets,
   parseFilters,
+  priceBandsFor,
   type FilterParams,
 } from "@/lib/filterProducts";
 import { getProductsInCollection } from "@/lib/products";
@@ -85,6 +86,7 @@ export default async function CollectionPage({
         <CollectionToolbar
           facets={facets}
           showClothingTypeFilter={collection.slug === "clothing"}
+          priceBands={priceBandsFor(collection.slug)}
           selectedConditions={[...filters.conditions]}
           selectedBrandSlugs={[...filters.brandSlugs]}
           selectedPriceBands={[...filters.priceBandKeys]}

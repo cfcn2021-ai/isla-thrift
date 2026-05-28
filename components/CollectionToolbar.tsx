@@ -5,9 +5,10 @@ import { useState } from "react";
 import {
   clothingTypeOptions,
   conditionOptions,
-  priceBands,
+  priceBands as defaultPriceBands,
   sortOptions,
   type Facets,
+  type PriceBand,
   type SortKey,
 } from "@/lib/filterProducts";
 import type { ClothingType, Condition } from "@/lib/products";
@@ -18,6 +19,8 @@ type Props = {
   showBrandFilter?: boolean;
   // Show the clothing-Type facet (only on /collections/clothing).
   showClothingTypeFilter?: boolean;
+  // Override the price band set (shoes get a higher-bracket scale).
+  priceBands?: PriceBand[];
   // Current values, derived server-side from searchParams. We accept them as
   // primitives so the component is trivially serializable across the boundary.
   selectedConditions: Condition[];
@@ -33,6 +36,7 @@ export function CollectionToolbar({
   facets,
   showBrandFilter = true,
   showClothingTypeFilter = false,
+  priceBands = defaultPriceBands,
   selectedConditions,
   selectedBrandSlugs,
   selectedPriceBands,

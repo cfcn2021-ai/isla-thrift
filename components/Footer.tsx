@@ -4,7 +4,6 @@ import {
   facebookProfileUrl,
   instagramFirstDibsUrl,
   instagramProfileUrl,
-  tiktokProfileUrl,
 } from "@/lib/dm";
 
 const trustPillars = [
@@ -88,7 +87,6 @@ export function Footer() {
               <p className="text-xs uppercase tracking-wide2 text-ink-muted mb-4">Follow</p>
               <ul className="space-y-2.5 text-sm">
                 <li><a className="press hover:text-accent-dark" href={instagramProfileUrl()} target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                <li><a className="press hover:text-accent-dark" href={tiktokProfileUrl()} target="_blank" rel="noopener noreferrer">TikTok</a></li>
                 <li><a className="press hover:text-accent-dark" href={facebookProfileUrl()} target="_blank" rel="noopener noreferrer">Facebook</a></li>
               </ul>
             </div>

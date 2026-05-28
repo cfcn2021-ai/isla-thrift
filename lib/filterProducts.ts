@@ -20,14 +20,28 @@ export const sortOptions: { value: SortKey; label: string }[] = [
   { value: "price-desc", label: "Price: High to Low" },
 ];
 
-export type PriceBandKey = "lt300" | "300-1000" | "1000-3000" | "gt3000";
+export type PriceBand = { value: string; label: string };
 
-export const priceBands: { value: PriceBandKey; label: string }[] = [
+// Default catalog-wide price bands (clothing, bags, mixed). Categories with
+// different price ranges (e.g. shoes) override via `priceBandsFor` below.
+export const priceBands: PriceBand[] = [
   { value: "lt300", label: "Under ₱300" },
   { value: "300-1000", label: "₱300–₱1,000" },
   { value: "1000-3000", label: "₱1,000–₱3,000" },
   { value: "gt3000", label: "₱3,000+" },
 ];
+
+const shoesPriceBands: PriceBand[] = [
+  { value: "lt1000", label: "Under ₱1,000" },
+  { value: "1000-3000", label: "₱1,000–₱3,000" },
+  { value: "3000-7000", label: "₱3,000–₱7,000" },
+  { value: "gt7000", label: "₱7,000+" },
+];
+
+export function priceBandsFor(categorySlug?: string): PriceBand[] {
+  if (categorySlug === "shoes") return shoesPriceBands;
+  return priceBands;
+}
 
 export const conditionOptions: { value: Condition; label: string }[] = [
   { value: "like_new", label: "Like New" },

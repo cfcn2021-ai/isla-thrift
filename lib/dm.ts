@@ -19,10 +19,11 @@ export function reserveMessage(p: Product): string {
   return lines.join("\n");
 }
 
-export function instagramReserveUrl(p: Product): string {
-  return `https://ig.me/m/${site.social.instagram}?text=${encodeURIComponent(
-    reserveMessage(p),
-  )}`;
+// Instagram does NOT honor `?text=` prefill on ig.me deep links (only Messenger
+// does via m.me). So this URL just opens the chat — the UI is responsible for
+// copying `reserveMessage(p)` to the clipboard so the buyer can paste.
+export function instagramReserveUrl(): string {
+  return `https://ig.me/m/${site.social.instagram}`;
 }
 
 export function messengerReserveUrl(p: Product): string {
